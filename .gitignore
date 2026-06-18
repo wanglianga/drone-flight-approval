@@ -1,0 +1,16 @@
+target/
+*.log
+*.tmp
+*.temp
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+.mvn/.maven.config
+.mvn/timing.properties
+hs_err_pid*
+replay_pid*
+screenshots/
+traces/
+playwright-report/

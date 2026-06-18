@@ -1,0 +1,17 @@
+target/
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.git/
+.gitignore
+*.class
+*.jar
+*.war
+*.log
+*.sql
+*.md
+node_modules/
+.env
+.env.local
