@@ -11,21 +11,27 @@ import com.drone.approval.repository.DroneRepository;
 import com.drone.approval.repository.MissionRepository;
 import com.drone.approval.repository.PilotRepository;
 import com.drone.approval.repository.TakeoffReportRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class TakeoffReportService {
 
-    private final TakeoffReportRepository takeoffReportRepository;
-    private final MissionRepository missionRepository;
-    private final PilotRepository pilotRepository;
-    private final DroneRepository droneRepository;
+    private TakeoffReportRepository takeoffReportRepository;
+    private MissionRepository missionRepository;
+    private PilotRepository pilotRepository;
+    private DroneRepository droneRepository;
+
+    public TakeoffReportService(TakeoffReportRepository takeoffReportRepository, MissionRepository missionRepository, PilotRepository pilotRepository, DroneRepository droneRepository) {
+        this.takeoffReportRepository = takeoffReportRepository;
+        this.missionRepository = missionRepository;
+        this.pilotRepository = pilotRepository;
+        this.droneRepository = droneRepository;
+    }
 
     @Transactional(readOnly = true)
     public List<TakeoffReport> getReportsByMission(Long missionId) {
@@ -47,8 +53,10 @@ public class TakeoffReportService {
             throw new BusinessException("只有已审批通过的任务才能进行起飞报备，当前状态: " + mission.getStatus());
         }
 
+        LocalDateTime startTime = request.getActualTakeoffTime().minusMinutes(5);
+        LocalDateTime endTime = request.getActualTakeoffTime().plusMinutes(5);
         Optional<TakeoffReport> existingReport = takeoffReportRepository.findDuplicateReport(
-                request.getMissionId(), request.getActualTakeoffTime(), 5);
+                request.getMissionId(), startTime, endTime);
 
         if (existingReport.isPresent()) {
             TakeoffReport duplicate = new TakeoffReport();

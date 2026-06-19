@@ -5,17 +5,19 @@ import com.drone.approval.dto.TakeoffReportRequest;
 import com.drone.approval.entity.TakeoffReport;
 import com.drone.approval.service.TakeoffReportService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/takeoff-reports")
-@RequiredArgsConstructor
 public class TakeoffReportController {
 
-    private final TakeoffReportService takeoffReportService;
+    private TakeoffReportService takeoffReportService;
+
+    public TakeoffReportController(TakeoffReportService takeoffReportService) {
+        this.takeoffReportService = takeoffReportService;
+    }
 
     @GetMapping("/mission/{missionId}")
     public ApiResponse<List<TakeoffReport>> getReportsByMission(@PathVariable Long missionId) {

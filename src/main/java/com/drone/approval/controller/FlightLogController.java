@@ -6,17 +6,19 @@ import com.drone.approval.dto.FlightLogRequest;
 import com.drone.approval.entity.FlightLog;
 import com.drone.approval.service.FlightLogService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/flight-logs")
-@RequiredArgsConstructor
 public class FlightLogController {
 
-    private final FlightLogService flightLogService;
+    private FlightLogService flightLogService;
+
+    public FlightLogController(FlightLogService flightLogService) {
+        this.flightLogService = flightLogService;
+    }
 
     @GetMapping("/mission/{missionId}")
     public ApiResponse<List<FlightLog>> getLogsByMission(@PathVariable Long missionId) {

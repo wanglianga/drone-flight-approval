@@ -5,17 +5,19 @@ import com.drone.approval.entity.Drone;
 import com.drone.approval.exception.BusinessException;
 import com.drone.approval.exception.ResourceNotFoundException;
 import com.drone.approval.repository.DroneRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class DroneService {
 
-    private final DroneRepository droneRepository;
+    private DroneRepository droneRepository;
+
+    public DroneService(DroneRepository droneRepository) {
+        this.droneRepository = droneRepository;
+    }
 
     @Transactional(readOnly = true)
     public List<Drone> getAllDrones() {

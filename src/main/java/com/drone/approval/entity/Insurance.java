@@ -1,15 +1,15 @@
 package com.drone.approval.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
-@Data
 @Entity
 @Table(name = "insurance")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Insurance {
 
     @Id
@@ -49,5 +49,93 @@ public class Insurance {
 
     public enum InsuranceStatus {
         VALID, EXPIRED, CANCELLED
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Drone getDrone() {
+        return drone;
+    }
+
+    public void setDrone(Drone drone) {
+        this.drone = drone;
+    }
+
+    public String getPolicyNumber() {
+        return policyNumber;
+    }
+
+    public void setPolicyNumber(String policyNumber) {
+        this.policyNumber = policyNumber;
+    }
+
+    public String getInsuranceCompany() {
+        return insuranceCompany;
+    }
+
+    public void setInsuranceCompany(String insuranceCompany) {
+        this.insuranceCompany = insuranceCompany;
+    }
+
+    public Double getCoverageAmount() {
+        return coverageAmount;
+    }
+
+    public void setCoverageAmount(Double coverageAmount) {
+        this.coverageAmount = coverageAmount;
+    }
+
+    public LocalDateTime getEffectiveDate() {
+        return effectiveDate;
+    }
+
+    public void setEffectiveDate(LocalDateTime effectiveDate) {
+        this.effectiveDate = effectiveDate;
+    }
+
+    public LocalDateTime getExpiryDate() {
+        return expiryDate;
+    }
+
+    public void setExpiryDate(LocalDateTime expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
+    public InsuranceStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(InsuranceStatus status) {
+        this.status = status;
+    }
+
+    public String getPolicyFileUrl() {
+        return policyFileUrl;
+    }
+
+    public void setPolicyFileUrl(String policyFileUrl) {
+        this.policyFileUrl = policyFileUrl;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

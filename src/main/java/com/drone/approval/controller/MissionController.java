@@ -6,17 +6,19 @@ import com.drone.approval.dto.MissionRequest;
 import com.drone.approval.entity.Mission;
 import com.drone.approval.service.MissionService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/missions")
-@RequiredArgsConstructor
 public class MissionController {
 
-    private final MissionService missionService;
+    private MissionService missionService;
+
+    public MissionController(MissionService missionService) {
+        this.missionService = missionService;
+    }
 
     @GetMapping
     public ApiResponse<List<Mission>> getAllMissions() {

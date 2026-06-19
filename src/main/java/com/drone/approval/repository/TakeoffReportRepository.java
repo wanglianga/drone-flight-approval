@@ -23,8 +23,8 @@ public interface TakeoffReportRepository extends JpaRepository<TakeoffReport, Lo
 
     @Query("SELECT t FROM TakeoffReport t WHERE t.mission.id = :missionId " +
             "AND t.status = 'REPORTED' " +
-            "AND ABS(DATE_PART('minute', t.actualTakeoffTime - :takeoffTime)) < :windowMinutes")
+            "AND t.actualTakeoffTime BETWEEN :startTime AND :endTime")
     Optional<TakeoffReport> findDuplicateReport(@Param("missionId") Long missionId,
-                                                 @Param("takeoffTime") LocalDateTime takeoffTime,
-                                                 @Param("windowMinutes") Integer windowMinutes);
+                                                 @Param("startTime") LocalDateTime startTime,
+                                                 @Param("endTime") LocalDateTime endTime);
 }

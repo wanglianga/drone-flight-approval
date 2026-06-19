@@ -6,7 +6,6 @@ import com.drone.approval.entity.*;
 import com.drone.approval.exception.BusinessException;
 import com.drone.approval.exception.ResourceNotFoundException;
 import com.drone.approval.repository.*;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,13 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class FlightLogService {
 
-    private final FlightLogRepository flightLogRepository;
-    private final MissionRepository missionRepository;
-    private final DroneRepository droneRepository;
-    private final ConflictDetectionService conflictDetectionService;
+    private FlightLogRepository flightLogRepository;
+    private MissionRepository missionRepository;
+    private DroneRepository droneRepository;
+    private ConflictDetectionService conflictDetectionService;
+
+    public FlightLogService(FlightLogRepository flightLogRepository, MissionRepository missionRepository, DroneRepository droneRepository, ConflictDetectionService conflictDetectionService) {
+        this.flightLogRepository = flightLogRepository;
+        this.missionRepository = missionRepository;
+        this.droneRepository = droneRepository;
+        this.conflictDetectionService = conflictDetectionService;
+    }
 
     @Transactional(readOnly = true)
     public List<FlightLog> getLogsByMission(Long missionId) {

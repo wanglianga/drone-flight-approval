@@ -9,7 +9,6 @@ import com.drone.approval.exception.ResourceNotFoundException;
 import com.drone.approval.repository.ApprovalRepository;
 import com.drone.approval.repository.ConflictSegmentRepository;
 import com.drone.approval.repository.MissionRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,12 +16,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class ApprovalService {
 
-    private final ApprovalRepository approvalRepository;
-    private final MissionRepository missionRepository;
-    private final ConflictSegmentRepository conflictSegmentRepository;
+    private ApprovalRepository approvalRepository;
+    private MissionRepository missionRepository;
+    private ConflictSegmentRepository conflictSegmentRepository;
+
+    public ApprovalService(ApprovalRepository approvalRepository, MissionRepository missionRepository, ConflictSegmentRepository conflictSegmentRepository) {
+        this.approvalRepository = approvalRepository;
+        this.missionRepository = missionRepository;
+        this.conflictSegmentRepository = conflictSegmentRepository;
+    }
 
     @Transactional(readOnly = true)
     public List<Approval> getApprovalsByMission(Long missionId) {

@@ -3,7 +3,6 @@ package com.drone.approval.service;
 import com.drone.approval.entity.Airspace;
 import com.drone.approval.exception.ResourceNotFoundException;
 import com.drone.approval.repository.AirspaceRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,10 +10,13 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class AirspaceService {
 
-    private final AirspaceRepository airspaceRepository;
+    private AirspaceRepository airspaceRepository;
+
+    public AirspaceService(AirspaceRepository airspaceRepository) {
+        this.airspaceRepository = airspaceRepository;
+    }
 
     @Transactional(readOnly = true)
     public List<Airspace> getAllAirspaces() {

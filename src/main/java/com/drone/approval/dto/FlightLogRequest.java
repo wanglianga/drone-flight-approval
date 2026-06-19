@@ -3,13 +3,11 @@ package com.drone.approval.dto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
 public class FlightLogRequest {
 
     @NotNull(message = "任务ID不能为空")
@@ -47,7 +45,6 @@ public class FlightLogRequest {
 
     private String missingLogReason;
 
-    @Data
     public static class TrackPointRequest {
 
         @NotNull(message = "航迹点序号不能为空")
@@ -72,5 +69,165 @@ public class FlightLogRequest {
         private Double batteryPercent;
 
         private Boolean isAbnormal;
+
+        public Integer getSequenceNumber() {
+            return sequenceNumber;
+        }
+
+        public void setSequenceNumber(Integer sequenceNumber) {
+            this.sequenceNumber = sequenceNumber;
+        }
+
+        public LocalDateTime getTimestamp() {
+            return timestamp;
+        }
+
+        public void setTimestamp(LocalDateTime timestamp) {
+            this.timestamp = timestamp;
+        }
+
+        public BigDecimal getLatitude() {
+            return latitude;
+        }
+
+        public void setLatitude(BigDecimal latitude) {
+            this.latitude = latitude;
+        }
+
+        public BigDecimal getLongitude() {
+            return longitude;
+        }
+
+        public void setLongitude(BigDecimal longitude) {
+            this.longitude = longitude;
+        }
+
+        public Double getAltitudeMeters() {
+            return altitudeMeters;
+        }
+
+        public void setAltitudeMeters(Double altitudeMeters) {
+            this.altitudeMeters = altitudeMeters;
+        }
+
+        public Double getSpeedMps() {
+            return speedMps;
+        }
+
+        public void setSpeedMps(Double speedMps) {
+            this.speedMps = speedMps;
+        }
+
+        public Integer getSatelliteCount() {
+            return satelliteCount;
+        }
+
+        public void setSatelliteCount(Integer satelliteCount) {
+            this.satelliteCount = satelliteCount;
+        }
+
+        public Double getBatteryPercent() {
+            return batteryPercent;
+        }
+
+        public void setBatteryPercent(Double batteryPercent) {
+            this.batteryPercent = batteryPercent;
+        }
+
+        public Boolean getIsAbnormal() {
+            return isAbnormal;
+        }
+
+        public void setIsAbnormal(Boolean isAbnormal) {
+            this.isAbnormal = isAbnormal;
+        }
+    }
+
+    public Long getMissionId() {
+        return missionId;
+    }
+
+    public void setMissionId(Long missionId) {
+        this.missionId = missionId;
+    }
+
+    public LocalDateTime getActualStartTime() {
+        return actualStartTime;
+    }
+
+    public void setActualStartTime(LocalDateTime actualStartTime) {
+        this.actualStartTime = actualStartTime;
+    }
+
+    public LocalDateTime getActualEndTime() {
+        return actualEndTime;
+    }
+
+    public void setActualEndTime(LocalDateTime actualEndTime) {
+        this.actualEndTime = actualEndTime;
+    }
+
+    public Integer getActualDurationMinutes() {
+        return actualDurationMinutes;
+    }
+
+    public void setActualDurationMinutes(Integer actualDurationMinutes) {
+        this.actualDurationMinutes = actualDurationMinutes;
+    }
+
+    public Double getActualMaxAltitudeMeters() {
+        return actualMaxAltitudeMeters;
+    }
+
+    public void setActualMaxAltitudeMeters(Double actualMaxAltitudeMeters) {
+        this.actualMaxAltitudeMeters = actualMaxAltitudeMeters;
+    }
+
+    public Double getActualDistanceKm() {
+        return actualDistanceKm;
+    }
+
+    public void setActualDistanceKm(Double actualDistanceKm) {
+        this.actualDistanceKm = actualDistanceKm;
+    }
+
+    public Integer getBatteryUsedCount() {
+        return batteryUsedCount;
+    }
+
+    public void setBatteryUsedCount(Integer batteryUsedCount) {
+        this.batteryUsedCount = batteryUsedCount;
+    }
+
+    public List<TrackPointRequest> getTrackPoints() {
+        return trackPoints;
+    }
+
+    public void setTrackPoints(List<TrackPointRequest> trackPoints) {
+        this.trackPoints = trackPoints;
+    }
+
+    public String getAnomalyDescription() {
+        return anomalyDescription;
+    }
+
+    public void setAnomalyDescription(String anomalyDescription) {
+        this.anomalyDescription = anomalyDescription;
+    }
+
+    public String getFlightStatus() {
+        return flightStatus;
+    }
+
+    public void setFlightStatus(String flightStatus) {
+        this.flightStatus = flightStatus;
+    }
+
+    public String getMissingLogReason() {
+        return missingLogReason;
+    }
+
+    public void setMissingLogReason(String missingLogReason) {
+        this.missingLogReason = missingLogReason;
     }
 }

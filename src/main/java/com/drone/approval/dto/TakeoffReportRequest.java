@@ -1,12 +1,10 @@
 package com.drone.approval.dto;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Data
 public class TakeoffReportRequest {
 
     @NotNull(message = "任务ID不能为空")
@@ -30,4 +28,68 @@ public class TakeoffReportRequest {
     private Integer numberOfBatteries;
 
     private String preflightCheckNotes;
+
+    public Long getMissionId() {
+        return missionId;
+    }
+
+    public void setMissionId(Long missionId) {
+        this.missionId = missionId;
+    }
+
+    public LocalDateTime getActualTakeoffTime() {
+        return actualTakeoffTime;
+    }
+
+    public void setActualTakeoffTime(LocalDateTime actualTakeoffTime) {
+        this.actualTakeoffTime = actualTakeoffTime;
+    }
+
+    public BigDecimal getTakeoffLatitude() {
+        return takeoffLatitude;
+    }
+
+    public void setTakeoffLatitude(BigDecimal takeoffLatitude) {
+        this.takeoffLatitude = takeoffLatitude;
+    }
+
+    public BigDecimal getTakeoffLongitude() {
+        return takeoffLongitude;
+    }
+
+    public void setTakeoffLongitude(BigDecimal takeoffLongitude) {
+        this.takeoffLongitude = takeoffLongitude;
+    }
+
+    public Double getBatteryLevelPercent() {
+        return batteryLevelPercent;
+    }
+
+    public void setBatteryLevelPercent(Double batteryLevelPercent) {
+        this.batteryLevelPercent = batteryLevelPercent;
+    }
+
+    public String getWeatherAtTakeoff() {
+        return weatherAtTakeoff;
+    }
+
+    public void setWeatherAtTakeoff(String weatherAtTakeoff) {
+        this.weatherAtTakeoff = weatherAtTakeoff;
+    }
+
+    public Integer getNumberOfBatteries() {
+        return numberOfBatteries;
+    }
+
+    public void setNumberOfBatteries(Integer numberOfBatteries) {
+        this.numberOfBatteries = numberOfBatteries;
+    }
+
+    public String getPreflightCheckNotes() {
+        return preflightCheckNotes;
+    }
+
+    public void setPreflightCheckNotes(String preflightCheckNotes) {
+        this.preflightCheckNotes = preflightCheckNotes;
+    }
 }

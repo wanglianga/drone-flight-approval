@@ -1,13 +1,14 @@
 package com.drone.approval.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.Data;
 
 import java.math.BigDecimal;
 
-@Data
 @Entity
 @Table(name = "route_points")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class RoutePoint {
 
     @Id
@@ -16,6 +17,7 @@ public class RoutePoint {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "route_id", nullable = false)
+    @JsonIgnore
     private FlightRoute route;
 
     @Column(nullable = false)
@@ -33,4 +35,68 @@ public class RoutePoint {
     private Double speedMps;
 
     private Integer holdTimeSeconds;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public FlightRoute getRoute() {
+        return route;
+    }
+
+    public void setRoute(FlightRoute route) {
+        this.route = route;
+    }
+
+    public Integer getSequenceNumber() {
+        return sequenceNumber;
+    }
+
+    public void setSequenceNumber(Integer sequenceNumber) {
+        this.sequenceNumber = sequenceNumber;
+    }
+
+    public BigDecimal getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(BigDecimal latitude) {
+        this.latitude = latitude;
+    }
+
+    public BigDecimal getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(BigDecimal longitude) {
+        this.longitude = longitude;
+    }
+
+    public Double getAltitudeMeters() {
+        return altitudeMeters;
+    }
+
+    public void setAltitudeMeters(Double altitudeMeters) {
+        this.altitudeMeters = altitudeMeters;
+    }
+
+    public Double getSpeedMps() {
+        return speedMps;
+    }
+
+    public void setSpeedMps(Double speedMps) {
+        this.speedMps = speedMps;
+    }
+
+    public Integer getHoldTimeSeconds() {
+        return holdTimeSeconds;
+    }
+
+    public void setHoldTimeSeconds(Integer holdTimeSeconds) {
+        this.holdTimeSeconds = holdTimeSeconds;
+    }
 }

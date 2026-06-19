@@ -5,7 +5,6 @@ import com.drone.approval.dto.NoFlyZoneRequest;
 import com.drone.approval.entity.NoFlyZone;
 import com.drone.approval.service.NoFlyZoneService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,10 +13,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/no-fly-zones")
-@RequiredArgsConstructor
 public class NoFlyZoneController {
 
-    private final NoFlyZoneService noFlyZoneService;
+    private NoFlyZoneService noFlyZoneService;
+
+    public NoFlyZoneController(NoFlyZoneService noFlyZoneService) {
+        this.noFlyZoneService = noFlyZoneService;
+    }
 
     @GetMapping
     public ApiResponse<List<NoFlyZone>> getAllNoFlyZones() {

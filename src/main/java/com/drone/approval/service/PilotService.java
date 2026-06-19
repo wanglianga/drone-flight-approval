@@ -5,7 +5,6 @@ import com.drone.approval.entity.Pilot;
 import com.drone.approval.exception.BusinessException;
 import com.drone.approval.exception.ResourceNotFoundException;
 import com.drone.approval.repository.PilotRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,10 +12,13 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class PilotService {
 
-    private final PilotRepository pilotRepository;
+    private PilotRepository pilotRepository;
+
+    public PilotService(PilotRepository pilotRepository) {
+        this.pilotRepository = pilotRepository;
+    }
 
     @Transactional(readOnly = true)
     public List<Pilot> getAllPilots() {

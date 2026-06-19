@@ -5,7 +5,6 @@ import com.drone.approval.dto.InsuranceRequest;
 import com.drone.approval.entity.Insurance;
 import com.drone.approval.service.InsuranceService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,10 +13,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/insurance")
-@RequiredArgsConstructor
 public class InsuranceController {
 
-    private final InsuranceService insuranceService;
+    private InsuranceService insuranceService;
+
+    public InsuranceController(InsuranceService insuranceService) {
+        this.insuranceService = insuranceService;
+    }
 
     @GetMapping
     public ApiResponse<List<Insurance>> getAllInsurance() {

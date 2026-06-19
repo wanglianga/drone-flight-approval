@@ -4,7 +4,6 @@ import com.drone.approval.dto.ConflictCheckResult;
 import com.drone.approval.entity.*;
 import com.drone.approval.repository.*;
 import com.drone.approval.util.GeoUtils;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -12,13 +11,19 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class ConflictDetectionService {
 
-    private final NoFlyZoneRepository noFlyZoneRepository;
-    private final AirspaceRepository airspaceRepository;
-    private final MissionRepository missionRepository;
-    private final InsuranceRepository insuranceRepository;
+    private NoFlyZoneRepository noFlyZoneRepository;
+    private AirspaceRepository airspaceRepository;
+    private MissionRepository missionRepository;
+    private InsuranceRepository insuranceRepository;
+
+    public ConflictDetectionService(NoFlyZoneRepository noFlyZoneRepository, AirspaceRepository airspaceRepository, MissionRepository missionRepository, InsuranceRepository insuranceRepository) {
+        this.noFlyZoneRepository = noFlyZoneRepository;
+        this.airspaceRepository = airspaceRepository;
+        this.missionRepository = missionRepository;
+        this.insuranceRepository = insuranceRepository;
+    }
 
     public ConflictCheckResult checkMissionConflicts(Mission mission, FlightRoute route) {
         ConflictCheckResult result = new ConflictCheckResult();

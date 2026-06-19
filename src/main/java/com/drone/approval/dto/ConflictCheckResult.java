@@ -1,12 +1,9 @@
 package com.drone.approval.dto;
 
-import lombok.Data;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 public class ConflictCheckResult {
 
     private boolean hasConflict = false;
@@ -18,7 +15,6 @@ public class ConflictCheckResult {
         this.conflicts.add(detail);
     }
 
-    @Data
     public static class ConflictDetail {
 
         private String conflictType;
@@ -50,5 +46,109 @@ public class ConflictCheckResult {
             this.conflictType = conflictType;
             this.description = description;
         }
+
+        public String getConflictType() {
+            return conflictType;
+        }
+
+        public void setConflictType(String conflictType) {
+            this.conflictType = conflictType;
+        }
+
+        public Integer getStartPointSequence() {
+            return startPointSequence;
+        }
+
+        public void setStartPointSequence(Integer startPointSequence) {
+            this.startPointSequence = startPointSequence;
+        }
+
+        public Integer getEndPointSequence() {
+            return endPointSequence;
+        }
+
+        public void setEndPointSequence(Integer endPointSequence) {
+            this.endPointSequence = endPointSequence;
+        }
+
+        public BigDecimal getStartLatitude() {
+            return startLatitude;
+        }
+
+        public void setStartLatitude(BigDecimal startLatitude) {
+            this.startLatitude = startLatitude;
+        }
+
+        public BigDecimal getStartLongitude() {
+            return startLongitude;
+        }
+
+        public void setStartLongitude(BigDecimal startLongitude) {
+            this.startLongitude = startLongitude;
+        }
+
+        public BigDecimal getEndLatitude() {
+            return endLatitude;
+        }
+
+        public void setEndLatitude(BigDecimal endLatitude) {
+            this.endLatitude = endLatitude;
+        }
+
+        public BigDecimal getEndLongitude() {
+            return endLongitude;
+        }
+
+        public void setEndLongitude(BigDecimal endLongitude) {
+            this.endLongitude = endLongitude;
+        }
+
+        public Double getConflictAltitude() {
+            return conflictAltitude;
+        }
+
+        public void setConflictAltitude(Double conflictAltitude) {
+            this.conflictAltitude = conflictAltitude;
+        }
+
+        public String getConflictZoneName() {
+            return conflictZoneName;
+        }
+
+        public void setConflictZoneName(String conflictZoneName) {
+            this.conflictZoneName = conflictZoneName;
+        }
+
+        public String getConflictZoneCode() {
+            return conflictZoneCode;
+        }
+
+        public void setConflictZoneCode(String conflictZoneCode) {
+            this.conflictZoneCode = conflictZoneCode;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+    }
+
+    public boolean isHasConflict() {
+        return hasConflict;
+    }
+
+    public void setHasConflict(boolean hasConflict) {
+        this.hasConflict = hasConflict;
+    }
+
+    public List<ConflictDetail> getConflicts() {
+        return conflicts;
+    }
+
+    public void setConflicts(List<ConflictDetail> conflicts) {
+        this.conflicts = conflicts;
     }
 }

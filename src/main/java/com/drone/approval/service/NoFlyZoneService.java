@@ -4,7 +4,6 @@ import com.drone.approval.dto.NoFlyZoneRequest;
 import com.drone.approval.entity.NoFlyZone;
 import com.drone.approval.exception.ResourceNotFoundException;
 import com.drone.approval.repository.NoFlyZoneRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,10 +11,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class NoFlyZoneService {
 
-    private final NoFlyZoneRepository noFlyZoneRepository;
+    private NoFlyZoneRepository noFlyZoneRepository;
+
+    public NoFlyZoneService(NoFlyZoneRepository noFlyZoneRepository) {
+        this.noFlyZoneRepository = noFlyZoneRepository;
+    }
 
     @Transactional(readOnly = true)
     public List<NoFlyZone> getAllNoFlyZones() {

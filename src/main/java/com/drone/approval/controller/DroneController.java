@@ -5,17 +5,19 @@ import com.drone.approval.dto.DroneRequest;
 import com.drone.approval.entity.Drone;
 import com.drone.approval.service.DroneService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/drones")
-@RequiredArgsConstructor
 public class DroneController {
 
-    private final DroneService droneService;
+    private DroneService droneService;
+
+    public DroneController(DroneService droneService) {
+        this.droneService = droneService;
+    }
 
     @GetMapping
     public ApiResponse<List<Drone>> getAllDrones() {

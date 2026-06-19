@@ -1,15 +1,15 @@
 package com.drone.approval.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
-@Data
 @Entity
 @Table(name = "drones")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Drone {
 
     @Id
@@ -54,5 +54,109 @@ public class Drone {
 
     public enum DroneStatus {
         AVAILABLE, IN_USE, MAINTENANCE, RETIRED
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSerialNumber() {
+        return serialNumber;
+    }
+
+    public void setSerialNumber(String serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public Double getMaxTakeoffWeight() {
+        return maxTakeoffWeight;
+    }
+
+    public void setMaxTakeoffWeight(Double maxTakeoffWeight) {
+        this.maxTakeoffWeight = maxTakeoffWeight;
+    }
+
+    public Double getMaxFlightAltitude() {
+        return maxFlightAltitude;
+    }
+
+    public void setMaxFlightAltitude(Double maxFlightAltitude) {
+        this.maxFlightAltitude = maxFlightAltitude;
+    }
+
+    public Integer getMaxFlightTime() {
+        return maxFlightTime;
+    }
+
+    public void setMaxFlightTime(Integer maxFlightTime) {
+        this.maxFlightTime = maxFlightTime;
+    }
+
+    public String getBatteryType() {
+        return batteryType;
+    }
+
+    public void setBatteryType(String batteryType) {
+        this.batteryType = batteryType;
+    }
+
+    public Integer getBatteryCount() {
+        return batteryCount;
+    }
+
+    public void setBatteryCount(Integer batteryCount) {
+        this.batteryCount = batteryCount;
+    }
+
+    public DroneStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(DroneStatus status) {
+        this.status = status;
+    }
+
+    public String getRegistrationFileUrl() {
+        return registrationFileUrl;
+    }
+
+    public void setRegistrationFileUrl(String registrationFileUrl) {
+        this.registrationFileUrl = registrationFileUrl;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

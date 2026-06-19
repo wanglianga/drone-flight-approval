@@ -6,17 +6,19 @@ import com.drone.approval.entity.Approval;
 import com.drone.approval.entity.ConflictSegment;
 import com.drone.approval.service.ApprovalService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/approvals")
-@RequiredArgsConstructor
 public class ApprovalController {
 
-    private final ApprovalService approvalService;
+    private ApprovalService approvalService;
+
+    public ApprovalController(ApprovalService approvalService) {
+        this.approvalService = approvalService;
+    }
 
     @GetMapping("/mission/{missionId}")
     public ApiResponse<List<Approval>> getApprovalsByMission(@PathVariable Long missionId) {

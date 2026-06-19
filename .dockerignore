@@ -10,8 +10,6 @@ target/
 *.jar
 *.war
 *.log
-*.sql
-*.md
 node_modules/
 .env
 .env.local

@@ -24,12 +24,14 @@
 ## 技术栈
 
 - Java 17
-- Spring Boot 3.2.5
+- Spring Boot 3.4.3
 - Spring Data JPA
 - PostgreSQL 16
 - Flyway（数据库迁移）
-- Lombok
+- H2（内存数据库，用于测试）
 - Maven
+
+> **注意**：由于 JDK 25 与 Lombok 存在兼容性问题，项目已移除 Lombok 依赖，所有实体类和 DTO 类的 getter/setter 方法均已手动实现。
 
 ## 启动方式
 

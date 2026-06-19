@@ -7,7 +7,6 @@ import com.drone.approval.exception.BusinessException;
 import com.drone.approval.exception.ResourceNotFoundException;
 import com.drone.approval.repository.DroneRepository;
 import com.drone.approval.repository.InsuranceRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,11 +14,15 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class InsuranceService {
 
-    private final InsuranceRepository insuranceRepository;
-    private final DroneRepository droneRepository;
+    private InsuranceRepository insuranceRepository;
+    private DroneRepository droneRepository;
+
+    public InsuranceService(InsuranceRepository insuranceRepository, DroneRepository droneRepository) {
+        this.insuranceRepository = insuranceRepository;
+        this.droneRepository = droneRepository;
+    }
 
     @Transactional(readOnly = true)
     public List<Insurance> getAllInsurance() {

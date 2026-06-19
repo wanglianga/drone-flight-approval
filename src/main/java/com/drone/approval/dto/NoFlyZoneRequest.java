@@ -3,12 +3,10 @@ package com.drone.approval.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Data
 public class NoFlyZoneRequest {
 
     @NotBlank(message = "禁飞区名称不能为空")
@@ -39,4 +37,84 @@ public class NoFlyZoneRequest {
     private LocalDateTime effectiveTo;
 
     private String reason;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public BigDecimal getCenterLatitude() {
+        return centerLatitude;
+    }
+
+    public void setCenterLatitude(BigDecimal centerLatitude) {
+        this.centerLatitude = centerLatitude;
+    }
+
+    public BigDecimal getCenterLongitude() {
+        return centerLongitude;
+    }
+
+    public void setCenterLongitude(BigDecimal centerLongitude) {
+        this.centerLongitude = centerLongitude;
+    }
+
+    public Double getRadiusMeters() {
+        return radiusMeters;
+    }
+
+    public void setRadiusMeters(Double radiusMeters) {
+        this.radiusMeters = radiusMeters;
+    }
+
+    public Double getMinAltitudeMeters() {
+        return minAltitudeMeters;
+    }
+
+    public void setMinAltitudeMeters(Double minAltitudeMeters) {
+        this.minAltitudeMeters = minAltitudeMeters;
+    }
+
+    public Double getMaxAltitudeMeters() {
+        return maxAltitudeMeters;
+    }
+
+    public void setMaxAltitudeMeters(Double maxAltitudeMeters) {
+        this.maxAltitudeMeters = maxAltitudeMeters;
+    }
+
+    public LocalDateTime getEffectiveFrom() {
+        return effectiveFrom;
+    }
+
+    public void setEffectiveFrom(LocalDateTime effectiveFrom) {
+        this.effectiveFrom = effectiveFrom;
+    }
+
+    public LocalDateTime getEffectiveTo() {
+        return effectiveTo;
+    }
+
+    public void setEffectiveTo(LocalDateTime effectiveTo) {
+        this.effectiveTo = effectiveTo;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
 }

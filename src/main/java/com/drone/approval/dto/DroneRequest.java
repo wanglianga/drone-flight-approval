@@ -3,9 +3,7 @@ package com.drone.approval.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import lombok.Data;
 
-@Data
 public class DroneRequest {
 
     @NotBlank(message = "无人机序列号不能为空")
@@ -37,4 +35,76 @@ public class DroneRequest {
     private Integer batteryCount;
 
     private String registrationFileUrl;
+
+    public String getSerialNumber() {
+        return serialNumber;
+    }
+
+    public void setSerialNumber(String serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public Double getMaxTakeoffWeight() {
+        return maxTakeoffWeight;
+    }
+
+    public void setMaxTakeoffWeight(Double maxTakeoffWeight) {
+        this.maxTakeoffWeight = maxTakeoffWeight;
+    }
+
+    public Double getMaxFlightAltitude() {
+        return maxFlightAltitude;
+    }
+
+    public void setMaxFlightAltitude(Double maxFlightAltitude) {
+        this.maxFlightAltitude = maxFlightAltitude;
+    }
+
+    public Integer getMaxFlightTime() {
+        return maxFlightTime;
+    }
+
+    public void setMaxFlightTime(Integer maxFlightTime) {
+        this.maxFlightTime = maxFlightTime;
+    }
+
+    public String getBatteryType() {
+        return batteryType;
+    }
+
+    public void setBatteryType(String batteryType) {
+        this.batteryType = batteryType;
+    }
+
+    public Integer getBatteryCount() {
+        return batteryCount;
+    }
+
+    public void setBatteryCount(Integer batteryCount) {
+        this.batteryCount = batteryCount;
+    }
+
+    public String getRegistrationFileUrl() {
+        return registrationFileUrl;
+    }
+
+    public void setRegistrationFileUrl(String registrationFileUrl) {
+        this.registrationFileUrl = registrationFileUrl;
+    }
 }

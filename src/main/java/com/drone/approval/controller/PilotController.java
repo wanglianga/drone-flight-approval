@@ -5,17 +5,19 @@ import com.drone.approval.dto.PilotRequest;
 import com.drone.approval.entity.Pilot;
 import com.drone.approval.service.PilotService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/pilots")
-@RequiredArgsConstructor
 public class PilotController {
 
-    private final PilotService pilotService;
+    private PilotService pilotService;
+
+    public PilotController(PilotService pilotService) {
+        this.pilotService = pilotService;
+    }
 
     @GetMapping
     public ApiResponse<List<Pilot>> getAllPilots() {

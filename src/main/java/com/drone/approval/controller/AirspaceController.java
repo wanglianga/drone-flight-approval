@@ -3,7 +3,6 @@ package com.drone.approval.controller;
 import com.drone.approval.common.ApiResponse;
 import com.drone.approval.entity.Airspace;
 import com.drone.approval.service.AirspaceService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -11,10 +10,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/airspaces")
-@RequiredArgsConstructor
 public class AirspaceController {
 
-    private final AirspaceService airspaceService;
+    private AirspaceService airspaceService;
+
+    public AirspaceController(AirspaceService airspaceService) {
+        this.airspaceService = airspaceService;
+    }
 
     @GetMapping
     public ApiResponse<List<Airspace>> getAllAirspaces() {
