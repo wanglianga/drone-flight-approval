@@ -27,4 +27,10 @@ public interface TakeoffReportRepository extends JpaRepository<TakeoffReport, Lo
     Optional<TakeoffReport> findDuplicateReport(@Param("missionId") Long missionId,
                                                  @Param("startTime") LocalDateTime startTime,
                                                  @Param("endTime") LocalDateTime endTime);
+
+    @Query("SELECT t FROM TakeoffReport t WHERE t.mission.id = :missionId AND t.status = 'REPORTED'")
+    Optional<TakeoffReport> findActiveReportByMissionId(@Param("missionId") Long missionId);
+
+    @Query("SELECT COUNT(t) > 0 FROM TakeoffReport t WHERE t.mission.id = :missionId AND t.status = 'REPORTED'")
+    boolean hasActiveReport(@Param("missionId") Long missionId);
 }

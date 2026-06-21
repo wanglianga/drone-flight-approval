@@ -2,6 +2,7 @@ package com.drone.approval.controller;
 
 import com.drone.approval.common.ApiResponse;
 import com.drone.approval.dto.ApprovalRequest;
+import com.drone.approval.dto.ConflictCheckResult;
 import com.drone.approval.entity.Approval;
 import com.drone.approval.entity.ConflictSegment;
 import com.drone.approval.service.ApprovalService;
@@ -51,5 +52,10 @@ public class ApprovalController {
             message = "已退回修改";
         }
         return ApiResponse.success(message, approvalService.createApproval(request));
+    }
+
+    @PostMapping("/mission/{missionId}/recalculate-risk")
+    public ApiResponse<ConflictCheckResult> recalculateRisk(@PathVariable Long missionId) {
+        return ApiResponse.success("风险重新计算完成", approvalService.recalculateRisk(missionId));
     }
 }

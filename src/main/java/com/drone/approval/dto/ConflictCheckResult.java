@@ -1,6 +1,7 @@
 package com.drone.approval.dto;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +39,16 @@ public class ConflictCheckResult {
         private String conflictZoneCode;
 
         private String description;
+
+        private Double restrictedMinAltitude;
+
+        private Double restrictedMaxAltitude;
+
+        private LocalDateTime flyableStartTime;
+
+        private LocalDateTime flyableEndTime;
+
+        private String detourSuggestion;
 
         public ConflictDetail() {
         }
@@ -133,6 +144,46 @@ public class ConflictCheckResult {
 
         public void setDescription(String description) {
             this.description = description;
+        }
+
+        public Double getRestrictedMinAltitude() {
+            return restrictedMinAltitude;
+        }
+
+        public void setRestrictedMinAltitude(Double restrictedMinAltitude) {
+            this.restrictedMinAltitude = restrictedMinAltitude;
+        }
+
+        public Double getRestrictedMaxAltitude() {
+            return restrictedMaxAltitude;
+        }
+
+        public void setRestrictedMaxAltitude(Double restrictedMaxAltitude) {
+            this.restrictedMaxAltitude = restrictedMaxAltitude;
+        }
+
+        public LocalDateTime getFlyableStartTime() {
+            return flyableStartTime;
+        }
+
+        public void setFlyableStartTime(LocalDateTime flyableStartTime) {
+            this.flyableStartTime = flyableStartTime;
+        }
+
+        public LocalDateTime getFlyableEndTime() {
+            return flyableEndTime;
+        }
+
+        public void setFlyableEndTime(LocalDateTime flyableEndTime) {
+            this.flyableEndTime = flyableEndTime;
+        }
+
+        public String getDetourSuggestion() {
+            return detourSuggestion;
+        }
+
+        public void setDetourSuggestion(String detourSuggestion) {
+            this.detourSuggestion = detourSuggestion;
         }
     }
 

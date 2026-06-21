@@ -49,6 +49,8 @@ public class TakeoffReport {
     @Enumerated(EnumType.STRING)
     private TakeoffStatus status = TakeoffStatus.REPORTED;
 
+    private String cancelReason;
+
     @CreationTimestamp
     private LocalDateTime reportedAt;
 
@@ -142,6 +144,14 @@ public class TakeoffReport {
 
     public void setStatus(TakeoffStatus status) {
         this.status = status;
+    }
+
+    public String getCancelReason() {
+        return cancelReason;
+    }
+
+    public void setCancelReason(String cancelReason) {
+        this.cancelReason = cancelReason;
     }
 
     public LocalDateTime getReportedAt() {

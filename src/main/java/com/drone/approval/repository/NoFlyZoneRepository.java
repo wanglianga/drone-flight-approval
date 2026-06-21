@@ -18,4 +18,10 @@ public interface NoFlyZoneRepository extends JpaRepository<NoFlyZone, Long> {
     List<NoFlyZone> findActiveNoFlyZones(@Param("checkTime") LocalDateTime checkTime);
 
     List<NoFlyZone> findByStatus(NoFlyZone.NoFlyZoneStatus status);
+
+    @Query("SELECT n FROM NoFlyZone n WHERE n.type = :type AND n.status = 'ACTIVE' " +
+            "AND (n.effectiveFrom IS NULL OR n.effectiveFrom <= :checkTime) " +
+            "AND (n.effectiveTo IS NULL OR n.effectiveTo >= :checkTime)")
+    List<NoFlyZone> findActiveByType(@Param("type") NoFlyZone.NoFlyZoneType type,
+                                      @Param("checkTime") LocalDateTime checkTime);
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "conflict_segments")
@@ -45,9 +46,20 @@ public class ConflictSegment {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
+    private Double restrictedMinAltitude;
+
+    private Double restrictedMaxAltitude;
+
+    private LocalDateTime flyableStartTime;
+
+    private LocalDateTime flyableEndTime;
+
+    private String detourSuggestion;
+
     public enum ConflictType {
         NO_FLY_ZONE, AIRSPACE_RESTRICTION, HEIGHT_EXCEEDED, TIME_CONFLICT,
-        TEMPORARY_RESTRICTION, WEATHER_UNSUITABLE, CROSS_REGION, DRONE_CONFLICT
+        TEMPORARY_RESTRICTION, WEATHER_UNSUITABLE, CROSS_REGION, DRONE_CONFLICT,
+        AIRPORT_CLEARANCE, SCHOOL_ZONE, EVENT_ZONE
     }
 
     public Long getId() {
@@ -152,5 +164,45 @@ public class ConflictSegment {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Double getRestrictedMinAltitude() {
+        return restrictedMinAltitude;
+    }
+
+    public void setRestrictedMinAltitude(Double restrictedMinAltitude) {
+        this.restrictedMinAltitude = restrictedMinAltitude;
+    }
+
+    public Double getRestrictedMaxAltitude() {
+        return restrictedMaxAltitude;
+    }
+
+    public void setRestrictedMaxAltitude(Double restrictedMaxAltitude) {
+        this.restrictedMaxAltitude = restrictedMaxAltitude;
+    }
+
+    public LocalDateTime getFlyableStartTime() {
+        return flyableStartTime;
+    }
+
+    public void setFlyableStartTime(LocalDateTime flyableStartTime) {
+        this.flyableStartTime = flyableStartTime;
+    }
+
+    public LocalDateTime getFlyableEndTime() {
+        return flyableEndTime;
+    }
+
+    public void setFlyableEndTime(LocalDateTime flyableEndTime) {
+        this.flyableEndTime = flyableEndTime;
+    }
+
+    public String getDetourSuggestion() {
+        return detourSuggestion;
+    }
+
+    public void setDetourSuggestion(String detourSuggestion) {
+        this.detourSuggestion = detourSuggestion;
     }
 }

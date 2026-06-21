@@ -58,6 +58,12 @@ public class Mission {
 
     private String weatherCondition;
 
+    private LocalDateTime reportWindowStart;
+
+    private LocalDateTime reportWindowEnd;
+
+    private LocalDateTime lastRiskCalculatedAt;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 
@@ -69,7 +75,7 @@ public class Mission {
     }
 
     public enum MissionStatus {
-        DRAFT, SUBMITTED, APPROVED, REJECTED, CANCELLED, IN_PROGRESS, COMPLETED
+        DRAFT, SUBMITTED, APPROVED, REJECTED, CANCELLED, IN_PROGRESS, COMPLETED, PENDING_REVIEW
     }
 
     public Long getId() {
@@ -182,6 +188,30 @@ public class Mission {
 
     public void setWeatherCondition(String weatherCondition) {
         this.weatherCondition = weatherCondition;
+    }
+
+    public LocalDateTime getReportWindowStart() {
+        return reportWindowStart;
+    }
+
+    public void setReportWindowStart(LocalDateTime reportWindowStart) {
+        this.reportWindowStart = reportWindowStart;
+    }
+
+    public LocalDateTime getReportWindowEnd() {
+        return reportWindowEnd;
+    }
+
+    public void setReportWindowEnd(LocalDateTime reportWindowEnd) {
+        this.reportWindowEnd = reportWindowEnd;
+    }
+
+    public LocalDateTime getLastRiskCalculatedAt() {
+        return lastRiskCalculatedAt;
+    }
+
+    public void setLastRiskCalculatedAt(LocalDateTime lastRiskCalculatedAt) {
+        this.lastRiskCalculatedAt = lastRiskCalculatedAt;
     }
 
     public LocalDateTime getCreatedAt() {

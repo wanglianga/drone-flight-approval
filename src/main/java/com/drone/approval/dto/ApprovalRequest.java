@@ -56,6 +56,16 @@ public class ApprovalRequest {
         @NotBlank(message = "冲突描述不能为空")
         private String description;
 
+        private Double restrictedMinAltitude;
+
+        private Double restrictedMaxAltitude;
+
+        private LocalDateTime flyableStartTime;
+
+        private LocalDateTime flyableEndTime;
+
+        private String detourSuggestion;
+
         public String getConflictType() {
             return conflictType;
         }
@@ -142,6 +152,46 @@ public class ApprovalRequest {
 
         public void setDescription(String description) {
             this.description = description;
+        }
+
+        public Double getRestrictedMinAltitude() {
+            return restrictedMinAltitude;
+        }
+
+        public void setRestrictedMinAltitude(Double restrictedMinAltitude) {
+            this.restrictedMinAltitude = restrictedMinAltitude;
+        }
+
+        public Double getRestrictedMaxAltitude() {
+            return restrictedMaxAltitude;
+        }
+
+        public void setRestrictedMaxAltitude(Double restrictedMaxAltitude) {
+            this.restrictedMaxAltitude = restrictedMaxAltitude;
+        }
+
+        public LocalDateTime getFlyableStartTime() {
+            return flyableStartTime;
+        }
+
+        public void setFlyableStartTime(LocalDateTime flyableStartTime) {
+            this.flyableStartTime = flyableStartTime;
+        }
+
+        public LocalDateTime getFlyableEndTime() {
+            return flyableEndTime;
+        }
+
+        public void setFlyableEndTime(LocalDateTime flyableEndTime) {
+            this.flyableEndTime = flyableEndTime;
+        }
+
+        public String getDetourSuggestion() {
+            return detourSuggestion;
+        }
+
+        public void setDetourSuggestion(String detourSuggestion) {
+            this.detourSuggestion = detourSuggestion;
         }
     }
 

@@ -57,7 +57,7 @@ public class NoFlyZone {
     private LocalDateTime updatedAt;
 
     public enum NoFlyZoneType {
-        PERMANENT, TEMPORARY, AIRPORT, MILITARY, GOVERNMENT, EVENT
+        PERMANENT, TEMPORARY, AIRPORT, MILITARY, GOVERNMENT, EVENT, SCHOOL
     }
 
     public enum NoFlyZoneStatus {
